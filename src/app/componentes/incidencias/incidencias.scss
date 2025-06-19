@@ -1,34 +1,37 @@
 .contenedor {
-    padding: 16px;
-    margin-top: 64px;
-    .estado{
-      display: flex;
-      margin-top: 10px;
-    }
-    .formulario {
-        display: flex;
-        gap: 3px;
-
-        .filtro {
-            width: 250px;
-
-        }
-
-        .filtrar {
-            border-radius: 0;
-            background-color: transparent;
-            box-shadow: none;
-        }
-
-        .derecha {
-            display: flex;
-            margin-left: auto;
-            //mirar altura
-        }
-
-    }
+  padding: 16px;
+  margin-top: 64px;
 
 }
+
+.estado {
+  display: flex;
+  margin-top: 10px;
+}
+
+.formulario {
+  display: flex;
+  gap: 3px;
+
+  .filtro {
+    width: 250px;
+
+  }
+
+  .filtrar {
+    border-radius: 0;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .derecha {
+    display: flex;
+    margin-left: auto;
+    //mirar altura
+  }
+
+}
+
 
 .prioridad-alta {
   color: rgb(236, 82, 82);
@@ -36,12 +39,38 @@
 }
 
 .prioridad-media {
-  color: rgb(236,145,82);
+  color: rgb(236, 145, 82);
   font: bold;
 }
 
 .prioridad-baja {
-  color: rgb(231,213,39);
+  color: rgb(231, 213, 39);
   font: bold;
 }
 
+.fila{
+  background-color: transparent;
+
+  &:hover {
+    background-color: rgb(48, 103, 164);
+  }
+}
+
+.contenedorAtras {
+  filter: blur(3px);
+  transition: filter 0,4s ease;
+}
+
+.card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  width: 400px;
+  max-width: 90vw;
+  background: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 16px;
+}

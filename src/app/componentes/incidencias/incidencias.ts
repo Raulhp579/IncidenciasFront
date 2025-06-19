@@ -13,6 +13,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterModule } from '@angular/router';
 import { NgClass } from '@angular/common';
+import {MatCardModule} from '@angular/material/card';
+import { IncidenciaDetalle } from "../incidencia-detalle/incidencia-detalle";
+
+
 @Component({
   selector: 'app-incidencias',
   imports: [
@@ -26,8 +30,10 @@ import { NgClass } from '@angular/common';
     MatButtonModule,
     MatSelectModule,
     RouterModule,
-    NgClass
-  ],
+    NgClass,
+    MatCardModule,
+    IncidenciaDetalle
+],
   templateUrl: './incidencias.html',
   styleUrl: './incidencias.scss',
 })
@@ -49,6 +55,7 @@ export class Incidencias implements OnInit {
     'estado',
     'fecha',
     'cliente',
+    'tecnico'
   ];
   dataSource = new MatTableDataSource<Incidencia>();
 
@@ -118,4 +125,12 @@ export class Incidencias implements OnInit {
 
 }
 
+abierto:boolean= false;
+mostrarMenu(){
+  this.abierto=true;
+}
+
+cerrarMenu(){
+  this.abierto=false;
+}
 }
