@@ -1,0 +1,47 @@
+.contenedor {
+    padding: 16px;
+    margin-top: 64px;
+    .estado{
+      display: flex;
+      margin-top: 10px;
+    }
+    .formulario {
+        display: flex;
+        gap: 3px;
+
+        .filtro {
+            width: 250px;
+
+        }
+
+        .filtrar {
+            border-radius: 0;
+            background-color: transparent;
+            box-shadow: none;
+        }
+
+        .derecha {
+            display: flex;
+            margin-left: auto;
+            //mirar altura
+        }
+
+    }
+
+}
+
+.prioridad-alta {
+  color: rgb(236, 82, 82);
+  font: bold;
+}
+
+.prioridad-media {
+  color: rgb(236,145,82);
+  font: bold;
+}
+
+.prioridad-baja {
+  color: rgb(231,213,39);
+  font: bold;
+}
+

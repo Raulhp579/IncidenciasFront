@@ -1,0 +1,31 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav barra" mode="side">
+    <mat-list role="list" class="lista">
+      <mat-list-item role="listitem">
+        <button
+          mat-fab
+          extended
+          routerLinkActive="activo"
+          routerLink="/incidencias"
+        >
+          Incidencias
+        </button>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <button mat-fab extended routerLinkActive="activo">Usuarios</button>
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+
+  <mat-toolbar color="primary" class="titulo-grid">
+    <div class="headerText">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <div class="letras">Gestor Incidencias</div>
+    <div class="right-space"></div>
+  </mat-toolbar>
+
+  <router-outlet></router-outlet>
+</mat-drawer-container>

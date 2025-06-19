@@ -1,0 +1,45 @@
+<h2 class="titulo">Rellene el formulario de la incidencia</h2>
+
+<form [formGroup]="loginForm" class="formulario">
+  <mat-form-field>
+    <mat-label>Nombre del Cliente</mat-label>
+    <input matInput formControlName="cliente" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Nombre de la incidencia</mat-label>
+    <input matInput formControlName="titulo" />
+  </mat-form-field>
+
+  <mat-form-field class="descripcion">
+    <mat-label>Introduce la descripción del problema</mat-label>
+    <textarea matInput formControlName="descripcion" ></textarea>
+  </mat-form-field>
+  <div class="selects">
+    <mat-form-field class="estado">
+      <mat-label>Estado</mat-label>
+      <mat-select formControlName="estado">
+        <mat-option value="ABIERTA">ABIERTA</mat-option>
+        <mat-option value="EN_CURSO">EN_CURSO</mat-option>
+        <mat-option value="RESUELTA">RESUELTA</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="prioridad">
+      <mat-label>Prioridad</mat-label>
+      <mat-select formControlName="prioridad">
+        <mat-option value="BAJA">BAJA</mat-option>
+        <mat-option value="MEDIA">MEDIA</mat-option>
+        <mat-option value="ALTA">ALTA</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <mat-form-field>
+    <mat-label>Nombre del Tecnico</mat-label>
+    <input matInput formControlName="tecnico" />
+  </mat-form-field>
+
+  <button matButton="filled" (click)="onSubmit()" routerLink="/incidencias">
+    Enviar Formulario
+  </button>
+</form>

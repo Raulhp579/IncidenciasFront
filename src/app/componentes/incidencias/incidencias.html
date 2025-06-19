@@ -1,0 +1,83 @@
+<div class="contenedor">
+  <form class="formulario">
+    <mat-form-field class="example-full-width" class="filtro">
+      <mat-label class="input">Filtrar Incidencias por Cliente</mat-label>
+      <input matInput [(ngModel)]="filtro" name="filtroId" />
+    </mat-form-field>
+    <button
+      matFab
+      aria-label="Example icon button with a delete icon"
+      class="filtrar"
+      (click)="filtrarIncidencias()"
+    >
+      <mat-icon>search</mat-icon>
+    </button>
+    <div class="derecha">
+      <button matButton class="addBoton" routerLink="/addIncidencia">
+        <mat-icon>add</mat-icon>
+      </button>
+
+      <button matButton class="verTodas" (click)="verTodasIncidencias()">
+        Ver todas las incidencias
+      </button>
+    </div>
+  </form>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="titulo">
+      <th mat-header-cell *matHeaderCellDef>Incidencia</th>
+      <td mat-cell *matCellDef="let element">{{element.titulo}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="prioridad">
+      <th mat-header-cell *matHeaderCellDef>Prioridad</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="getPrioridadClass(element.prioridad)"
+      >
+        {{element.prioridad}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="descripcion">
+      <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+      <td mat-cell *matCellDef="let element">{{ element.descripcion }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef>Estado</th>
+      <td mat-cell *matCellDef="let element" class="estado">
+        <mat-form-field>
+          <mat-select
+            canSelectNullableOptions
+            (selectionChange)="cambiarEstado(element.id, estadoNuevo)"
+          >
+            <mat-option>{{element.estado}}</mat-option>
+            @for (option of options; track option) { @if
+            (option.label!==element.estado) {
+            <mat-option (onSelectionChange)="estadoNuevo = option.label"
+              >{{option.label}}</mat-option
+            >
+            } }
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef>Fecha</th>
+      <td mat-cell *matCellDef="let element">
+        {{element.fechaCreacion| date: 'dd/MM/yyyy'}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cliente">
+      <th mat-header-cell *matHeaderCellDef>Cliente</th>
+      <td mat-cell *matCellDef="let element">{{element.cliente.nombre}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

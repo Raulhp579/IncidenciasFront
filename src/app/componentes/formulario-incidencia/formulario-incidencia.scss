@@ -1,0 +1,35 @@
+ .formulario {
+     display: flex;
+     margin-top: 40px;
+     text-align: center;
+     justify-content: center;
+     margin-left: 34%;
+     margin-right: 35%;
+     flex-direction: column;
+
+     button {
+         background-color: rgb(48, 103, 164);
+
+         &:hover {
+             background-color: rgb(0, 69, 143);
+         }
+     }
+
+     .selects {
+         display: flex;
+         justify-content: space-between;
+
+         .estado {
+             width: 48%;
+         }
+
+         .prioridad {
+             width: 48%;
+         }
+     }
+ }
+
+ .titulo {
+     margin-top: 104px;
+     text-align: center;
+ }
