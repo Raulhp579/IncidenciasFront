@@ -10,6 +10,16 @@ export class IncidenciaService {
 
   constructor(private http:HttpClient) { }
 
+  id:number=0;
+
+  incidenciaSelecciona(id:number){
+    this.id=id;
+  }
+
+  getIncidenciaSeleccionada(){
+    return this.id;
+  }
+
   private getHeaders():HttpHeaders{
     return new HttpHeaders({
       'Content-Type': 'application/json'

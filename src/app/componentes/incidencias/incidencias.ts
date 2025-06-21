@@ -13,9 +13,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterModule } from '@angular/router';
 import { NgClass } from '@angular/common';
-import {MatCardModule} from '@angular/material/card';
-import { IncidenciaDetalle } from "../incidencia-detalle/incidencia-detalle";
-
+import { MatCardModule } from '@angular/material/card';
+import { IncidenciaDetalle } from '../incidencia-detalle/incidencia-detalle';
+import { ChangeDetectorRef } from '@angular/core'; //para arreglar el error asincrono
 
 @Component({
   selector: 'app-incidencias',
@@ -32,14 +32,13 @@ import { IncidenciaDetalle } from "../incidencia-detalle/incidencia-detalle";
     RouterModule,
     NgClass,
     MatCardModule,
-    IncidenciaDetalle
-],
+    IncidenciaDetalle,
+  ],
   templateUrl: './incidencias.html',
   styleUrl: './incidencias.scss',
 })
 export class Incidencias implements OnInit {
-  
- estadoNuevo:string="";
+  estadoNuevo: string = '';
 
   options = [
     { label: 'ABIERTA' },
@@ -55,14 +54,13 @@ export class Incidencias implements OnInit {
     'estado',
     'fecha',
     'cliente',
-    'tecnico'
+    'tecnico',
   ];
   dataSource = new MatTableDataSource<Incidencia>();
 
-  filtro: string="";
+  filtro: string = '';
 
-  constructor(private incidenciaService: IncidenciaService) {}
-
+  constructor(private incidenciaService: IncidenciaService, private cdRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.incidenciaService.getIncidencias().subscribe(
@@ -76,18 +74,20 @@ export class Incidencias implements OnInit {
   }
 
   filtrarIncidencias() {
-    this.incidenciaService.obtenerIncidenciaPorNombreCliente(this.filtro).subscribe(
-      (response) => {
-        this.dataSource.data = response;
-      },
-      (error) => {
-        console.error(
-          'error recibo de datos en filtrar',
-          JSON.stringify(error, null, 2)
-        );
-        alert('Cliente no existente');
-      }
-    );
+    this.incidenciaService
+      .obtenerIncidenciaPorNombreCliente(this.filtro)
+      .subscribe(
+        (response) => {
+          this.dataSource.data = response;
+        },
+        (error) => { //ya no entra mirar porque 
+          console.error(
+            'error recibo de datos en filtrar',
+            JSON.stringify(error, null, 2)
+          );
+          alert('Cliente no existente');
+        }
+      );
   }
 
   verTodasIncidencias() {
@@ -101,36 +101,48 @@ export class Incidencias implements OnInit {
     );
   }
 
-  cambiarEstado(id:number, estadoNuevo:string){
-    this.incidenciaService.cambiarEstado(id,estadoNuevo).subscribe(data=>{
-      console.log("Incidencia con ID "+id+" cambiada a estado "+estadoNuevo)
-    },
-    (error)=>{
-      console.error("error "+error,)
-    }
-  )
+  cambiarEstado(id: number, estadoNuevo: string) {
+    this.incidenciaService.cambiarEstado(id, estadoNuevo).subscribe(
+      (data) => {
+        console.log(
+          'Incidencia con ID ' + id + ' cambiada a estado ' + estadoNuevo
+        );
+      },
+      (error) => {
+        console.error('error ' + error);
+      }
+    );
   }
 
   getPrioridadClass(prioridad: string): string {
-
-    if(prioridad==='ALTA'){
+    if (prioridad === 'ALTA') {
       return 'prioridad-alta';
-    }else if(prioridad==='MEDIA'){
+    } else if (prioridad === 'MEDIA') {
       return 'prioridad-media';
-    }else if(prioridad==='BAJA'){
-       return 'prioridad-baja';
-    }else{
+    } else if (prioridad === 'BAJA') {
+      return 'prioridad-baja';
+    } else {
       return '';
     }
+  }
+  titulo: string = '';
+  abierto: boolean = false;
+  datosCargados = false;
+  mostrarMenu(row: any) {
+    const id = row.id;
+    this.incidenciaService.incidenciaSelecciona(id);
+    this.incidenciaService.obtenerPorId(id).subscribe((response) => { 
+      this.titulo = response.titulo;
+      this.datosCargados = true;
+      this.abierto = true;
 
-}
+      this.cdRef.detectChanges();//arregla el error asincrono ya que fuerza a la vista reevaluar los nuevos valores
+    });
+  }
 
-abierto:boolean= false;
-mostrarMenu(){
-  this.abierto=true;
-}
-
-cerrarMenu(){
-  this.abierto=false;
-}
+  cerrarMenu() {
+    this.abierto = false;
+    this.datosCargados = false;
+    this.titulo = '';
+  }
 }

@@ -51,6 +51,7 @@
         <mat-form-field>
           <mat-select
             canSelectNullableOptions
+            (click)="$event.stopPropagation()"
             (selectionChange)="cambiarEstado(element.id, estadoNuevo)"
           >
             <mat-option>{{element.estado}}</mat-option>
@@ -93,18 +94,17 @@
       mat-row
       *matRowDef="let row; columns: displayedColumns;"
       class="fila"
-      (click)="mostrarMenu()"
+      (click)="mostrarMenu(row)"
     ></tr>
   </table>
 </div>
 
-@if (abierto) {
+@if (abierto&& datosCargados) {
 <div class="card">
   <mat-card appearance="outlined">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Shiba Inu</mat-card-title>
-      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+      <mat-card-title>{{titulo}}</mat-card-title>
     </mat-card-header>
 
     <mat-card-content>
