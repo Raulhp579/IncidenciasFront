@@ -16,6 +16,7 @@ import { NgClass } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { IncidenciaDetalle } from '../incidencia-detalle/incidencia-detalle';
 import { ChangeDetectorRef } from '@angular/core'; //para arreglar el error asincrono
+import { SlicePipe } from '@angular/common';
 
 @Component({
   selector: 'app-incidencias',
@@ -33,6 +34,7 @@ import { ChangeDetectorRef } from '@angular/core'; //para arreglar el error asin
     NgClass,
     MatCardModule,
     IncidenciaDetalle,
+    SlicePipe
   ],
   templateUrl: './incidencias.html',
   styleUrl: './incidencias.scss',

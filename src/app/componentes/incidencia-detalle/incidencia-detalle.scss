@@ -1,0 +1,27 @@
+.contenedor {
+    
+    .lista {
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        margin: 0;
+
+        .textArea {
+            display: flex;
+            align-items: flex-start;
+
+            textarea {
+                width: 100%;
+                height: 160px;
+                resize: vertical;
+                padding: 8px;
+                font-size: 14px;
+                line-height: 1.5;
+                box-sizing: border-box;
+                margin-left: 2%;
+                margin-right: 2%;
+
+            }
+        }
+    }
+}

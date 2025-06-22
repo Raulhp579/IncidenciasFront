@@ -48,7 +48,7 @@
   font: bold;
 }
 
-.fila{
+.fila {
   background-color: transparent;
 
   &:hover {
@@ -58,7 +58,7 @@
 
 .contenedorAtras {
   filter: blur(3px);
-  transition: filter 0,4s ease;
+  transition: filter 0, 4s ease;
 }
 
 .card {
@@ -67,10 +67,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000;
-  width: 400px;
-  max-width: 90vw;
+  width: 800px;
   background: white;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   padding: 16px;
+  max-height: 80vh;
+  overflow-y: auto;
 }

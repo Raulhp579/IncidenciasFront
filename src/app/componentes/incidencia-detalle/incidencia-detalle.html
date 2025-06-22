@@ -1,7 +1,31 @@
 @if (mostrarIncidencia) {
-<mat-list role="list">
-  <mat-list-item role="listitem">{{incidencia.id}}</mat-list-item>
-  <mat-list-item role="listitem">Item 2</mat-list-item>
-  <mat-list-item role="listitem">Item 3</mat-list-item>
-</mat-list>
+<div class="contenedor">
+  <mat-list role="list" class="lista">
+    <mat-list-item role="listitem">
+      <span><strong>ID: </strong> {{ incidencia.id }}</span></mat-list-item
+    >
+    <mat-list-item role="listitem"><strong>Descripción:</strong></mat-list-item>
+    <div class="textArea">
+      <textarea readonly>{{incidencia.descripcion}}</textarea>
+    </div>
+    <mat-list-item role="listitem"
+      ><strong>Estado: </strong>{{incidencia.estado}}</mat-list-item
+    >
+    <mat-list-item role="listitem"
+      ><strong>Prioridad: </strong>{{incidencia.prioridad}}</mat-list-item
+    >
+    <mat-list-item role="listitem"
+      ><strong>Fecha: </strong>{{incidencia.fechaCreacion | date:
+      'dd/MM/yyyy'}}</mat-list-item
+    >
+    <mat-list-item role="listitem"
+      ><strong
+        >Cliente:
+      </strong>
+      <ul>
+        <li>{{incidencia.cliente.nombre}}</li>
+      </ul>
+    </mat-list-item>
+  </mat-list>
+</div>
 }

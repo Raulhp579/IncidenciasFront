@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {MatListModule} from '@angular/material/list';
 import { IncidenciaService } from '../../servicios/incidencia-service';
 import { ChangeDetectorRef } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-incidencia-detalle',
-  imports: [MatListModule],
+  imports: [MatListModule,DatePipe],
   templateUrl: './incidencia-detalle.html',
   styleUrl: './incidencia-detalle.scss'
 })
