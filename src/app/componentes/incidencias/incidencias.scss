@@ -75,4 +75,18 @@
   max-height: 80vh;
   overflow-y: auto;
   border-radius: 0%;
+  .header{
+    display: flex;
+    align-items: center;
+    width: 96%;
+    background-color: gray;
+    .titulo{
+      text-align: center;
+    }
+    .botonCerrar{
+        margin-left: auto;
+        box-shadow: none;
+        background: none;
+    }
+  }
 }
