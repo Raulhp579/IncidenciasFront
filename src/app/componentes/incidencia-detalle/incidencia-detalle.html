@@ -1,4 +1,14 @@
 @if (mostrarIncidencia) {
+<div class="contenedorBoton">
+  <button
+    matMiniFab
+    aria-label="Example icon button with a menu icon"
+    class="botonEditar"
+  >
+    <mat-icon>edit</mat-icon>
+  </button>
+</div>
+
 <div class="contenedor">
   <mat-list role="list" class="lista">
     <mat-list-item role="listitem">
@@ -12,18 +22,26 @@
       ><strong>Estado: </strong>{{incidencia.estado}}</mat-list-item
     >
     <mat-list-item role="listitem"
-      ><strong>Prioridad: </strong>{{incidencia.prioridad}}</mat-list-item
-    >
+      ><strong>Prioridad: </strong>{{incidencia.prioridad}}
+    </mat-list-item>
+
     <mat-list-item role="listitem"
       ><strong>Fecha: </strong>{{incidencia.fechaCreacion | date:
       'dd/MM/yyyy'}}</mat-list-item
     >
-    <mat-list-item role="listitem"
-      ><strong
-        >Cliente:
-      </strong>
+    <mat-list-item role="listitem" class="cliente"
+      ><strong>Cliente: </strong>
       <ul>
-        <li>{{incidencia.cliente.nombre}}</li>
+        <li><strong>Nombre: </strong>{{incidencia.cliente.nombre}}</li>
+        <li><strong>Correo: </strong>{{incidencia.cliente.email}}</li>
+      </ul>
+    </mat-list-item>
+
+    <mat-list-item role="listitem" class="tecnico">
+      <strong>Tecnico: </strong>
+      <ul>
+        <li><strong>Nombre: </strong> {{incidencia.tecnico.nombre}}</li>
+        <li><strong>Correo: </strong> {{incidencia.tecnico.email}}</li>
       </ul>
     </mat-list-item>
   </mat-list>

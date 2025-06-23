@@ -58,7 +58,7 @@ export class IncidenciaService {
     return this.http.get("http://localhost:8080/incidence/getByTechnical/"+idTec, {headers: this.getHeaders()})
   };
 
-  obtenerIncidenciaPorNombreCliente(nombre:string):Observable<any>{
+  obtenerIncidenciaPorNombre(nombre:string):Observable<any>{
     return this.http.get("http://localhost:8080/incidence/findByNombre/"+nombre, {headers:this.getHeaders()})
   }
 }

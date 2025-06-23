@@ -77,7 +77,7 @@ export class Incidencias implements OnInit {
 
   filtrarIncidencias() {
     this.incidenciaService
-      .obtenerIncidenciaPorNombreCliente(this.filtro)
+      .obtenerIncidenciaPorNombre(this.filtro)
       .subscribe(
         (response) => {
           this.dataSource.data = response;

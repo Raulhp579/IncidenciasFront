@@ -3,9 +3,17 @@
      margin-top: 40px;
      text-align: center;
      justify-content: center;
-     margin-left: 34%;
+     margin-left: 35%;
      margin-right: 35%;
      flex-direction: column;
+
+     .descripcion {
+         display: flex;
+
+         textarea {
+             height: 110px;
+         }
+     }
 
      button {
          background-color: rgb(48, 103, 164);
@@ -32,4 +40,5 @@
  .titulo {
      margin-top: 104px;
      text-align: center;
+     justify-content: center;
  }

@@ -3,10 +3,13 @@ import {MatListModule} from '@angular/material/list';
 import { IncidenciaService } from '../../servicios/incidencia-service';
 import { ChangeDetectorRef } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-incidencia-detalle',
-  imports: [MatListModule,DatePipe],
+  imports: [MatListModule,DatePipe,MatButtonModule,MatIconModule,RouterModule],
   templateUrl: './incidencia-detalle.html',
   styleUrl: './incidencia-detalle.scss'
 })
