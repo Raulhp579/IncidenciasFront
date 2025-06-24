@@ -1,4 +1,4 @@
-@if (mostrarIncidencia) {
+@if(incidencia&&cliente&&(tecnico===null||tecnico)){
 <div class="contenedorBoton">
   <button
     matMiniFab
@@ -14,10 +14,7 @@
     <mat-list-item role="listitem">
       <span><strong>ID: </strong> {{ incidencia.id }}</span></mat-list-item
     >
-    <mat-list-item role="listitem"><strong>Descripción:</strong></mat-list-item>
-    <div class="textArea">
-      <textarea readonly>{{incidencia.descripcion}}</textarea>
-    </div>
+
     <mat-list-item role="listitem"
       ><strong>Estado: </strong>{{incidencia.estado}}</mat-list-item
     >
@@ -26,24 +23,36 @@
     </mat-list-item>
 
     <mat-list-item role="listitem"
-      ><strong>Fecha: </strong>{{incidencia.fechaCreacion | date:
+      ><strong>Fecha: </strong>{{incidencia.fecha | date:
       'dd/MM/yyyy'}}</mat-list-item
     >
+
+    <mat-list-item role="listitem"><strong>Descripción:</strong></mat-list-item>
+    <div class="textArea">
+      <textarea readonly>{{incidencia.descripcion}}</textarea>
+    </div>
+
     <mat-list-item role="listitem" class="cliente"
       ><strong>Cliente: </strong>
       <ul>
-        <li><strong>Nombre: </strong>{{incidencia.cliente.nombre}}</li>
-        <li><strong>Correo: </strong>{{incidencia.cliente.email}}</li>
+        <li><strong>Nombre: </strong>{{cliente.nombre}}</li>
+        <li><strong>Correo: </strong>{{cliente.email}}</li>
       </ul>
     </mat-list-item>
-
+    @if (tecnico!==null&&tecnico) {
     <mat-list-item role="listitem" class="tecnico">
       <strong>Tecnico: </strong>
       <ul>
-        <li><strong>Nombre: </strong> {{incidencia.tecnico.nombre}}</li>
-        <li><strong>Correo: </strong> {{incidencia.tecnico.email}}</li>
+        <li><strong>Nombre: </strong> {{tecnico?.nombre}}</li>
+        <li><strong>Correo: </strong> {{tecnico?.email}}</li>
       </ul>
     </mat-list-item>
+    }@else {
+    <mat-list-item role="listitem"
+      ><strong>Sin tecnico asociado</strong></mat-list-item
+    >
+    }
   </mat-list>
 </div>
+
 }

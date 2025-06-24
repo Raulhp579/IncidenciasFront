@@ -17,6 +17,8 @@ import { MatCardModule } from '@angular/material/card';
 import { IncidenciaDetalle } from '../incidencia-detalle/incidencia-detalle';
 import { ChangeDetectorRef } from '@angular/core'; //para arreglar el error asincrono
 import { SlicePipe } from '@angular/common';
+import { Usuario } from '../usuario/usuario';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-incidencias',
@@ -55,39 +57,34 @@ export class Incidencias implements OnInit {
     'descripcion',
     'estado',
     'fecha',
-    'cliente',
-    'tecnico',
+    'clienteId',
+    'tecnicoId',
   ];
   dataSource = new MatTableDataSource<Incidencia>();
 
-  filtro: string = '';
+  filtro: number = 0;
 
   constructor(private incidenciaService: IncidenciaService, private cdRef: ChangeDetectorRef) {}
 
-  ngOnInit(): void {
-    this.incidenciaService.getIncidencias().subscribe(
-      (response) => {
-        this.dataSource.data = response;
-      },
-      (error) => {
-        console.error('Error en el recibo de datos' + error);
-      }
+  async ngOnInit(): Promise<void> {
+    this.dataSource.data = await firstValueFrom(
+      this.incidenciaService.getIncidencias()
     );
   }
 
   filtrarIncidencias() {
     this.incidenciaService
-      .obtenerIncidenciaPorNombre(this.filtro)
+      .obtenerPorIdUsuario(this.filtro)
       .subscribe(
         (response) => {
           this.dataSource.data = response;
         },
-        (error) => { //ya no entra mirar porque 
+        (error) => {
           console.error(
             'error recibo de datos en filtrar',
             JSON.stringify(error, null, 2)
           );
-          alert('Cliente no existente');
+          alert('Id no existente');
         }
       );
   }

@@ -20,7 +20,7 @@ export class UsuarioService {
     return this.http.get("http://localhost:8080/user/getUsers" ,{headers:this.getHeaders()})
   }
 
-  getUsuariosPorId(idUser:number):Observable<any>{
+  getUsuarioPorId(idUser:number):Observable<any>{
     return this.http.get("http://localhost:8080/user/getUser/"+idUser, {headers:this.getHeaders()})
   }
 

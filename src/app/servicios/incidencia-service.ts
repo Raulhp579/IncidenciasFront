@@ -49,8 +49,8 @@ export class IncidenciaService {
     return this.http.get("http://localhost:8080/incidence/getIncidence/"+IdInc, {headers:this.getHeaders()})
   };
 
-  obtenerPorCliente(idUser:number):Observable<any>{
-    return this.http.get("http://localhost:8080/incidence/getByClient/"+idUser, {headers:this.getHeaders()})
+  obtenerPorIdUsuario(idUser:number):Observable<any>{
+    return this.http.get("http://localhost:8080/incidence/getById/"+idUser, {headers:this.getHeaders()})
   }; 
 
   obtenerPorTecnico(idTec:number):Observable<any>{

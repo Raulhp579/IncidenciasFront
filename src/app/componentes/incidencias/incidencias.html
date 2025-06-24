@@ -1,7 +1,7 @@
 <div [ngClass]="abierto ? 'contenedorAtras':'contenedor'">
   <form class="formulario">
     <mat-form-field class="example-full-width" class="filtro">
-      <mat-label class="input">Filtrar Incidencias por Nombre</mat-label>
+      <mat-label class="input">Filtrar Incidencias por Id</mat-label>
       <input matInput [(ngModel)]="filtro" name="filtroId" />
     </mat-form-field>
     <button
@@ -70,20 +70,20 @@
     <ng-container matColumnDef="fecha">
       <th mat-header-cell *matHeaderCellDef>Fecha</th>
       <td mat-cell *matCellDef="let element">
-        {{element.fechaCreacion| date: 'dd/MM/yyyy'}}
+        {{element.fecha| date: 'dd/MM/yyyy'}}
       </td>
     </ng-container>
 
-    <ng-container matColumnDef="cliente">
-      <th mat-header-cell *matHeaderCellDef>Cliente</th>
-      <td mat-cell *matCellDef="let element">{{element.cliente.nombre}}</td>
+    <ng-container matColumnDef="clienteId">
+      <th mat-header-cell *matHeaderCellDef>Cliente Id</th>
+      <td mat-cell *matCellDef="let element">{{element.clienteId}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="tecnico">
-      <th mat-header-cell *matHeaderCellDef>Técnico</th>
+    <ng-container matColumnDef="tecnicoId">
+      <th mat-header-cell *matHeaderCellDef>Técnico Id</th>
       <ng-container *matCellDef="let element">
-        @if (element.tecnico?.nombre) {
-        <td mat-cell>{{element.tecnico.nombre}}</td>
+        @if (element?.tecnicoId) {
+        <td mat-cell>{{element.tecnicoId}}</td>
         }@else{
         <td mat-cell><mat-icon>person</mat-icon></td>
         }
