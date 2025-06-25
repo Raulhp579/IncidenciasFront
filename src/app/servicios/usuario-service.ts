@@ -35,4 +35,8 @@ export class UsuarioService {
   getPorNombre(nombre:string):Observable<any>{
     return this.http.get("http://localhost:8080/user/getByName/"+nombre, {headers:this.getHeaders()})
   }
+
+  getPorRol(rol:string):Observable<any>{
+    return this.http.get("http://localhost:8080/user/getUsersByRol/"+rol, {headers:this.getHeaders()})
+  }
 }

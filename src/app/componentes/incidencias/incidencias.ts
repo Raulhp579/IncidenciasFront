@@ -17,7 +17,6 @@ import { MatCardModule } from '@angular/material/card';
 import { IncidenciaDetalle } from '../incidencia-detalle/incidencia-detalle';
 import { ChangeDetectorRef } from '@angular/core'; //para arreglar el error asincrono
 import { SlicePipe } from '@angular/common';
-import { Usuario } from '../usuario/usuario';
 import { firstValueFrom } from 'rxjs';
 
 @Component({

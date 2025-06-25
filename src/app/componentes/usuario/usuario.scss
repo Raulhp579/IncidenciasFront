@@ -1,4 +1,20 @@
 .contenedor{
     margin-top: 64px;
     padding: 16px;
+    .top{
+        display: flex;
+        .form{
+            display: flex;
+            gap: 8px;
+            .filtrar{
+                border-radius: 0%;
+                box-shadow: none;
+                background: none;
+            }
+        }
+        .derecha{
+        margin-left: auto;
+    }
+    }
+    
 }
