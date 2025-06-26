@@ -18,10 +18,10 @@
       </button>
 
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>TODOS</button>
-        <button mat-menu-item>CLIENTE</button>
-        <button mat-menu-item>TECNICO</button>
-        <button mat-menu-item>ADMIN</button>
+        <button mat-menu-item (click)="filtrarPorRol('TODOS')">TODOS</button>
+        <button mat-menu-item (click)="filtrarPorRol('CLIENTE')">CLIENTE</button>
+        <button mat-menu-item (click)="filtrarPorRol('TECNICO')">TECNICO</button>
+        <button mat-menu-item (click)="filtrarPorRol('ADMIN')">ADMIN</button>
       </mat-menu>
     </div>
   </div>

@@ -5,10 +5,12 @@ import { FormularioIncidencia } from './componentes/formulario-incidencia/formul
 import { IncidenciaDetalle } from './componentes/incidencia-detalle/incidencia-detalle';
 import { Usuario } from './componentes/usuario/usuario';
 import { FormularioUsuario } from './componentes/formulario-usuario/formulario-usuario';
+import { Home } from './componentes/home/home';
 
 export const routes: Routes = [
     {path:'header' ,component:Header},
     {path:'incidencias' ,component:Incidencias},
+    {path:'home', component:Home},
     {path: '', redirectTo: 'incidencias', pathMatch: 'full'},
     {path:'addIncidencia', component:FormularioIncidencia},
     {path:'verIncidencia', component:IncidenciaDetalle},

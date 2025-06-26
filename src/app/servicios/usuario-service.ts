@@ -24,8 +24,8 @@ export class UsuarioService {
     return this.http.get("http://localhost:8080/user/getUser/"+idUser, {headers:this.getHeaders()})
   }
 
-  addUsuario(usuario:Usuario):Observable<any>{
-    return this.http.post("http://localhost:8080/user/addUser", usuario)
+  addUsuario(usuario:any):Observable<any>{
+    return this.http.post("http://localhost:8080/user/addUser", usuario, {headers:this.getHeaders()})
   }
 
   actualizarUsuario(idUsuario:number, cambio:string, valor:any):Observable<any>{

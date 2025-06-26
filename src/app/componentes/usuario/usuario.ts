@@ -20,29 +20,48 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     MatTableModule,
     MatIconModule,
-    RouterModule
+    RouterModule,
   ],
   templateUrl: './usuario.html',
   styleUrl: './usuario.scss',
-  standalone: true
+  standalone: true,
 })
-export class Usuario implements OnInit{
-  displayedColumns: string[] = ['id', 'nombre', 'email', 'contraseña','rol'];
+export class Usuario implements OnInit {
+  displayedColumns: string[] = ['id', 'nombre', 'email', 'contraseña', 'rol'];
   dataSource = new MatTableDataSource<Usuario>();
-  filtro:string=""
-  constructor(private usuarioService:UsuarioService){}
+  filtro: string = '';
+  constructor(private usuarioService: UsuarioService) {}
 
-   async ngOnInit():Promise<void>{
+  async ngOnInit(): Promise<void> {
     this.dataSource.data = await firstValueFrom(
       this.usuarioService.getUsuarios()
-    )
+    );
   }
 
-  async buscarPorNombre(){
+  async buscarPorNombre() {
     const resultado = await firstValueFrom(
       this.usuarioService.getPorNombre(this.filtro)
-    )
-    this.dataSource.data = Array.isArray(resultado) ? resultado: [resultado];
+    );
+    this.dataSource.data = Array.isArray(resultado) ? resultado : [resultado];
   }
 
+  async filtrarPorRol(rol: string) {
+    if (rol === 'TODOS') {
+      this.dataSource.data = await firstValueFrom(
+        this.usuarioService.getUsuarios()
+      );
+    } else if (rol === 'CLIENTE') {
+      this.dataSource.data = await firstValueFrom(
+        this.usuarioService.getPorRol(rol)
+      );
+    } else if (rol === 'TECNICO') {
+      this.dataSource.data = await firstValueFrom(
+        this.usuarioService.getPorRol(rol)
+      );
+    } else if (rol === 'ADMIN') {
+      this.dataSource.data = await firstValueFrom(
+        this.usuarioService.getPorRol(rol)
+      );
+    }
+  }
 }
